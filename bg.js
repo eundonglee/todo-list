@@ -1,22 +1,31 @@
-const body = document.querySelector("body");
+const body = document.querySelector("body"),
+    bgForm = document.querySelector(".js-bgForm"),
+    bgInput = bgForm.querySelector("input")
 
-const IMG_NUMBER = 3
+let image = new Image();
 
-function paintImage(imgNumber) {
-    const image = new Image();
-    image.src = `images/${imgNumber + 1}.jpg`;
+function paintRandomImage() {
+    image.src = `https://source.unsplash.com/random/1600x900`;
     image.classList.add("bgImage")
     body.appendChild(image);
 }
 
-function genRandom(){
-    const number = Math.floor(Math.random() * 3);
-    return number;
+function paintImage(keyWord) {
+    image.src = `https://source.unsplash.com/1600x900/?${keyWord.split(" ").join(",")}`;
+    const oldImage = document.body.querySelector(".bgImage")
+    body.removeChild(oldImage);
+    body.appendChild(image);
+}
+
+function submitHandle(event) {
+    event.preventDefault();
+    const imgKeyword = bgInput.value;
+    paintImage(imgKeyword);
 }
 
 function init() {
-    const randomnumber = genRandom();
-    paintImage(randomnumber);
+    paintRandomImage();
+    bgForm.addEventListener("submit", submitHandle);
 }
 
 init();

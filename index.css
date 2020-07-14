@@ -1,7 +1,7 @@
 body {
     background-color: #2d3436;
     color: white;
-    font-size: 4vh;
+    font-size: 4vmin;
     text-align: center;
     margin-top: 2vmin;
     margin-bottom: 1vmin;
@@ -10,8 +10,40 @@ h1 {
     color: white;
     font-size: 15vmin;
 }
+input {
+    font-size: 3vmin;
+    width : 30vmin;
+    height: 5vmin;
+}
+input::placeholder {
+    font-style: italic;
+    font-size: 3vmin;
+}
+ul {
+    list-style: none;
+}
+li {
+    margin: 0.5vmin;
+}
+.bgForm {
+    position: fixed;
+    top : 3vmin;
+    right: 2vmin;
+}
+.bgForm span {
+    font-size: 2.5vmin;
+}
+.bgForm input {
+    font-size: 2vmin;
+    width : 25vmin;
+    height: 3vmin;
+}
+.bgForm input::placeholder {
+    font-style: italic;
+    font-size: 2vmin;
+}
 .clock {
-    margin-top: 15vmin;
+    margin-top: 17vmin;
 }
 .form {
     display: none;
@@ -33,6 +65,17 @@ h1 {
         opacity:1;
     }
 }
+/* @keyframes fadeOut {
+    0% {
+        opacity:1;
+    }
+    20% {
+        opacity:1;
+    }
+    100% {
+        opacity:0;
+    }
+} */
 .bgImage {
     position: absolute;
     top:0;
@@ -41,4 +84,5 @@ h1 {
     width:100%;
     z-index:-1;
     animation: fadeIn 4s linear;
+    /* animation: fadeOut 4s linear; */
 }
