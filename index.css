@@ -1,0 +1,44 @@
+body {
+    background-color: #2d3436;
+    color: white;
+    font-size: 4vh;
+    text-align: center;
+    margin-top: 2vmin;
+    margin-bottom: 1vmin;
+}
+h1 {
+    color: white;
+    font-size: 15vmin;
+}
+.clock {
+    margin-top: 15vmin;
+}
+.form {
+    display: none;
+}
+.greeting {
+    display: none;
+}
+.showing {
+    display: block;
+}
+@keyframes fadeIn {
+    0% {
+        opacity:0;
+    }
+    20% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+.bgImage {
+    position: absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    z-index:-1;
+    animation: fadeIn 4s linear;
+}
