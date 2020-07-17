@@ -26,6 +26,7 @@ function paintTodo(text) {
     const delBtn = document.createElement("button");
     const span = document.createElement("span");
     const newId = todos.length + 1;
+    delBtn.classList.add("btn", "pointer");
     delBtn.innerText = "❌";
     delBtn.addEventListener("click", deleteTodo);
     span.innerText = text;
@@ -41,7 +42,7 @@ function paintTodo(text) {
     saveTodos();
 }
 
-function handleSubmit(event) {
+function handleTodoSubmit(event) {
     event.preventDefault();
     const currentValue = todoInput.value;
     paintTodo(currentValue);
@@ -60,7 +61,7 @@ function loadTodos() {
 
 function init() {
     loadTodos();
-    todoForm.addEventListener("submit", handleSubmit);
+    todoForm.addEventListener("submit", handleTodoSubmit);
 }
 
 init();

@@ -20,10 +20,23 @@ input::placeholder {
     font-size: 3vmin;
 }
 ul {
+    display: block;
+    width : 20vw;
+    margin : 3vmin auto;
+    padding: 0;
     list-style: none;
 }
 li {
-    margin: 0.5vmin;
+    margin: 1vmin;
+    text-align: left;
+}
+button {
+    position: relative;
+    top: 50%;
+    margin: 0 1vmin;
+    border-radius: 2.5vmin;
+    text-align: center;
+    font-size: inherit;
 }
 .bgForm {
     position: fixed;
@@ -51,6 +64,15 @@ li {
 .greeting {
     display: none;
 }
+.btn {
+    font-size:2vmin;
+}
+.pointer {
+    cursor: pointer;
+}
+.hoverUnderline:hover {
+    text-decoration: underline;
+}
 .showing {
     display: block;
 }
@@ -65,17 +87,6 @@ li {
         opacity:1;
     }
 }
-/* @keyframes fadeOut {
-    0% {
-        opacity:1;
-    }
-    20% {
-        opacity:1;
-    }
-    100% {
-        opacity:0;
-    }
-} */
 .bgImage {
     position: absolute;
     top:0;
@@ -84,5 +95,4 @@ li {
     width:100%;
     z-index:-1;
     animation: fadeIn 4s linear;
-    /* animation: fadeOut 4s linear; */
 }
