@@ -2,6 +2,7 @@ body {
     background-color: #2d3436;
     color: white;
     font-size: 4vmin;
+    text-shadow: 1vmin 1vmin 1vmin black;
     text-align: center;
     margin-top: 2vmin;
     margin-bottom: 1vmin;
