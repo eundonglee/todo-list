@@ -1,4 +1,5 @@
-const weather = document.querySelector(".js-weather");
+const weather = document.querySelector(".js-weather"),
+    weatherRefresh = document.querySelector(".js-weatherRefresh");
 
 const API_KEY = "8b0aefe72f5e097339c9f473fc9acbdc";
 const COORDS = "coord";
@@ -11,6 +12,7 @@ function getWeather(lat, lon) {
         const temperature = json.main.temp;
         const place = json.name;
         weather.innerText = `${_weather} ${temperature}°c @ ${place}`;
+        weather.classList.add(SHOWING_CN);
     });
 }
 
@@ -37,6 +39,14 @@ function askfForCoords() {
     navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
 }
 
+function refreshWeather() {
+    const loadedCoords = localStorage.getItem(COORDS);
+    if (loadedCoords !== null) {
+        localStorage.removeItem(COORDS);
+        askfForCoords();
+    }
+}
+
 function loadCoords() {
     const loadedCoords = localStorage.getItem(COORDS);
     if (loadedCoords === null) {
@@ -47,8 +57,33 @@ function loadCoords() {
     }
 }
 
+function showRefresh(event) {
+    event.preventDefault();
+    weather.classList.remove(SHOWING_CN);
+    weatherRefresh.classList.add(SHOWING_CN);
+}
+
+function showWeather(event) {
+    event.preventDefault();
+    weatherRefresh.classList.remove(SHOWING_CN);
+    weather.classList.add(SHOWING_CN);
+};
+
+function refreshWeatherListener(event) {
+    event.preventDefault();
+    refreshWeather();
+}
+
+function addWeatherEventListener() {
+    weather.addEventListener("mouseover",showRefresh);
+    weatherRefresh.addEventListener("mouseout", showWeather);e=
+    weatherRefresh.addEventListener("click", refreshWeatherListener);
+}
+
 function init() {
     loadCoords();
+    addWeatherEventListener();
+    setInterval(loadCoords, 600*1000)
 }
 
 init();

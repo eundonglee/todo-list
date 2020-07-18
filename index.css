@@ -77,14 +77,20 @@ button {
 .greeting {
     display: none;
 }
+.weather {
+    display: none;
+    width: 50vmin;
+    margin : 7vmin auto;
+}
+.weatherRefresh {
+    display: none;
+    width: 50vmin;
+    margin : 7vmin auto;
+    cursor: pointer;
+    text-decoration: underline;
+}
 .btn {
     font-size:2vmin;
-}
-.pointer {
-    cursor: pointer;
-}
-.hoverUnderline:hover {
-    text-decoration: underline;
 }
 .showing {
     display: block;
