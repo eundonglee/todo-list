@@ -38,6 +38,18 @@ button {
     text-align: center;
     font-size: inherit;
 }
+.greetingMsg {
+    display: none;
+    width: 50vmin;
+    margin : 3vmin auto;
+}
+.renameMsg {
+    display: none;
+    width: 50vmin;
+    margin: 3vmin auto;
+    cursor: pointer;
+    text-decoration: underline;
+}
 .bgForm {
     position: fixed;
     top : 3vmin;
@@ -58,8 +70,9 @@ button {
 .clock {
     margin-top: 17vmin;
 }
-.form {
+.nameForm {
     display: none;
+    margin: 2vmin;
 }
 .greeting {
     display: none;

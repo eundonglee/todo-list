@@ -17,33 +17,56 @@ function handleNameSubmit(event) {
     saveName(currentValue);
 }
 
+function showRename(event) {
+    event.preventDefault();
+    greetingMsg = event.target;
+    parent = greetingMsg.parentNode;
+    renameMsg = parent.querySelector(".renameMsg");
+    greetingMsg.classList.remove(SHOWING_CN);
+    renameMsg.classList.add(SHOWING_CN);
+}
+
+function showGreetingMsg(event) {
+    event.preventDefault();
+    renameMsg = event.target;
+    parent = greetingMsg.parentNode;
+    greetingMsg = parent.querySelector(".greetingMsg");
+    renameMsg.classList.remove(SHOWING_CN);
+    greetingMsg.classList.add(SHOWING_CN);
+};
+
 function askForName() {
     nameForm.classList.add(SHOWING_CN);
     nameForm.addEventListener("submit", handleNameSubmit);
 }
 
-function rename() {
+function rename(event) {
     event.preventDefault();
-    const userName = event.target;
-    const greetingToName = userName.parentNode;
-    greeting.removeChild(greetingToName);
+    while (greeting.firstChild) {
+        greeting.removeChild(greeting.firstChild);
+    }
     localStorage.removeItem(USER_LS);
     greeting.classList.remove(SHOWING_CN);
     askForName();
 }
 
+function makeRename() {
+    const span = document.createElement("span");
+    span.classList.add("renameMsg");
+    span.innerText = "R e n a m e";
+    span.addEventListener("mouseout", showGreetingMsg);
+    span.addEventListener("click", rename);
+    greeting.appendChild(span);
+}
+
 function paintGreeting(text) {
-    const div = document.createElement("div")
-    const spanMsg = document.createElement("span");
-    const spanName = document.createElement("span");
-    spanMsg.innerText = "Hello, ";
-    spanName.innerText = `${text}`;
-    spanName.title = "Rename";
-    spanName.classList.add("pointer", "hoverUnderline");
-    spanName.addEventListener("click", rename)
-    div.appendChild(spanMsg);
-    div.appendChild(spanName);
-    greeting.appendChild(div);
+    const span = document.createElement("span")
+    span.classList.add("greetingMsg");
+    span.innerText = `Hello, ${text}`;
+    makeRename();
+    span.addEventListener("mouseover", showRename);
+    span.classList.add(SHOWING_CN);
+    greeting.appendChild(span);
     nameForm.classList.remove(SHOWING_CN);
     greeting.classList.add(SHOWING_CN);
 }
